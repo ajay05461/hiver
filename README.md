@@ -6,7 +6,7 @@ Steps to run for terraform task:
 4.	Run ‘terraform init’
 5.	Run ‘terraform validate’
 6.	Run ‘terraform apply –auto-approve’
-7.	After the execution of terraform apply it prints the output of network load balancer
+7.	After the execution of terraform apply, it prints the output of network load balancer dns name
 
 Steps to run for getting the ec2 instance details of a certain type:
 1.	Install boto3
