@@ -22,3 +22,4 @@ output "vpc2instanceip"{
         description =  "Instance ips of ec2 instances spawned in vpc-2"
         value = aws_instance.server2.*.public_ip
 }
+

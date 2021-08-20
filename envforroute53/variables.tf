@@ -45,3 +45,4 @@ variable "keyname" {
   type        = string
   default     = "MyKeyPair"
 }
+
