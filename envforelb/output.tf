@@ -20,17 +20,17 @@ output "subnetdetails" {
 #	value =  local.webinstanceid
 #}
 
-output "applbpublicdns"{
-        description = "App Loadbalancer fqdn"
-        value = aws_lb.appelb.dns_name
+output "applbpublicdns" {
+  description = "App Loadbalancer fqdn"
+  value       = aws_lb.appelb.dns_name
 }
 
-output "weblbpublicdns"{
-	description = "Web Loadbalancer fqdn"
-	value = aws_lb.webelb.dns_name
+output "weblbpublicdns" {
+  description = "Web Loadbalancer fqdn"
+  value       = aws_lb.webelb.dns_name
 }
 
-output "websubnets"{
-	description = "Web subnets"
-	value = local.websubnets
+output "websubnets" {
+  description = "Web subnets"
+  value       = local.websubnets
 }

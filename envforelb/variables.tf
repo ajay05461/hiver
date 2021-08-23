@@ -45,7 +45,7 @@ variable "web-sg" {
       to_port     = 81
       protocol    = "tcp"
       #cidr_block  = ["172.31.0.0/16"]
-      cidr_block  = ["0.0.0.0/0"]
+      cidr_block = ["0.0.0.0/0"]
     },
     {
       description = "Allow ssh traffic"
@@ -60,7 +60,7 @@ variable "web-sg" {
       to_port     = 8080
       protocol    = "tcp"
       #cidr_block  = ["172.31.1.0/24", "172.31.2.0/24"]
-      cidr_block  = ["0.0.0.0/0"]
+      cidr_block = ["0.0.0.0/0"]
     },
     {
       description = "Allow https traffic"
@@ -68,7 +68,7 @@ variable "web-sg" {
       to_port     = 8443
       protocol    = "tcp"
       #cidr_block  = ["172.31.1.0/24", "172.31.2.0/24"]
-      cidr_block  = ["0.0.0.0/0"]
+      cidr_block = ["0.0.0.0/0"]
     },
     {
       description = "Allow http traffic"

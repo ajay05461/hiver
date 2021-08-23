@@ -21,6 +21,8 @@
     ignore_errors: true
   - name: Start web service
     shell: docker run -d -h web{{ play_hosts.index(inventory_hostname) +1 }} --name web{{ play_hosts.index(inventory_hostname)+1 }} -p 80:80 -p 443:443 -e APPSERVER={{appserver}} benpiper/mtwa:web
+  - name: Start Imagegen service
+    shell: docker run -d -p 81:80 -h imagen{{ play_hosts.index(inventory_hostname) +1 }} benpiper/imagegen
 
 - hosts: app
   become: true
