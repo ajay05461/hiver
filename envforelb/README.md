@@ -12,6 +12,6 @@ Follow the below steps to bring up the infra
 3. cd envforelb ; terraform apply --auto-approve
 4. Copy the applbpublicdns value from terraform output (Required to use this value while running ansible-playbook)
 5. cp MyKeyPair.pem ansible; cd ansible; chmod 600 MyKeyPair.pem
-6. ansible-playbook -i aws_ec2.yaml site.yaml -u ec2-user --private-key MyKeyPair.pem --extra-vars "appserver=http://<applbpublicdns output from terraform>:8080"
+6. ansible-playbook -i aws_ec2.yaml site.yaml -u ec2-user --private-key MyKeyPair.pem --extra-vars "appserver=http://[applbpublicdns output from terraform]:8080" (Update the app loadbalancer dnsname and execute the command)
 
   
