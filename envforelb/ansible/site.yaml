@@ -1,0 +1,41 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install docker
+    yum:
+     name: ["docker", "python2-pip"]
+     state: present
+
+  - name: Start docker service
+    systemd: 
+      name: docker
+      state: started
+      enabled: yes
+
+- hosts: web
+  become: true
+  tasks:
+  - name: remove web service if running
+    shell: docker rm -f $(docker ps -a -q) 
+    ignore_errors: true
+  - name: Start web service
+    shell: docker run -d -h web{{ play_hosts.index(inventory_hostname) +1 }} --name web{{ play_hosts.index(inventory_hostname)+1 }} -p 80:80 -p 443:443 -e APPSERVER={{appserver}} benpiper/mtwa:web
+
+- hosts: app
+  become: true
+  tasks:
+  - name: remove app service if running
+    shell: docker rm -f $(docker ps -a -q)
+    ignore_errors: true
+  - name: Start app service
+    shell: docker run -d -h app{{ play_hosts.index(inventory_hostname) +1 }} --name app{{ play_hosts.index(inventory_hostname)+1 }} -p 8080:8080 -p 8443:8443 benpiper/mtwa:app
+
+- hosts: db
+  become: true
+  tasks:
+  - name: remove db service if running
+    shell: docker rm -f $(docker ps -a -q)
+    ignore_errors: true
+  - name: Start adb service
+    shell: docker run -d -h db --name db -p 3306:3306 benpiper/mtwa-db
